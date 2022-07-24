@@ -1,0 +1,133 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=bar-y-category-stack&code=PYBwLglsB2AEC8sDeAoWszGAG0iAXMmuhgE4QDmFApqYQOQCGAHhAM70A0x6L7ACsAjQwtQqhIkA9FNgBVNtVh82GYGUo1SanHh4kwATxDUGbABaMAJsADu9WDNj0L1uw8aqr1AGaMArrgA3LAAxoxwjNhs6gBGSvTYwtQOwNouljb2-gC-xDnc6NjUNNBW4gXEFOTlRJLFPmAMAMwApFz65BTmTc4ALO2FJLHAYJgAti2D-qEwYIzCADKM8diEYKT-1PlDzACCrGzi-kYmDABuUVv0O8SGB-zHkqemzuGiFGmGHZJWjPOEADa9AAjABOADsAA4uM5wRCwbDQWCoQAGJHgqEgjEogBMOKhzQJfXoAF1buhFORqEdYID9BJJLBoIxxq96IA6n0A-xmwQCqyoBZeUIgEFlQDgcoAKFR-TJeDFijFIkskbHmoQA1gxMPNsAqSNgVtQ1nUmZTzHZ1pttkbKkbqOMQJY2I9DUafMBQv5aS5aBAaTdLUNfv9GEDcVDcRCAHS47jNVF9CMAVmjzVxIPDIMTKGaINDkejuPjqNzmfjzT64ea0ahENx4ah3D6qIhqajKHJkitJEZkhZbIYgEmLQCNQXzBbBxdr0NLnLL5f6SErGKr1aMouPYLrVk8jbALKayFt9OgO5IbXbPI6u0yXW6PVTvRwD7AjyQ_gC6SmAGzhiGcXG4wvfsN_x_MFPzrZp4zBWtOD6d9mi_Th30bL82xIJ8L3QHt2UATptAEzTYdCDHWcJ2Mdlp1XedF2cDUVyItc9QNdC5xNWwzX3P0HxPe1zwfdAr3dMwvR9B8n3QF8gzpeMUyg98-jgxMIXfSCQU4EFUT_cNExBbNU2_VT4007N40jFDD1nRjMIYQA1nzwgVhUIh9J3oMjaIotUqOXLVaPXfVNyNHcWL3C0mRE2BOLPWlGN411-OcW8hPYo0xODZooTTOtcRgtM-mA1MQSjZpEMjOtZKMsFsobODcQrONIJgkzH1nYhyRyIIgA
+	请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.3.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      // Use axis to trigger tooltip
+      type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
+    }
+  },
+  legend: {},
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'category',
+    data: ['1978', '1979', '1980', '1981', '1982', '1983', '1984']
+  },
+  series: [
+    {
+      name: '粮食 单位: 十万吨',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [2827.2,
+3047.5,
+3321.15,
+3182.2,
+3250.2,
+3534.3,
+3872.8,
+4071.2,
+]
+    },
+    {
+      name: '棉花 单位: 万吨',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [216.7,220.7,270.7,296.8,359.8,463.7,607.7]
+    },
+    {
+      name: '油料 单位: 万吨',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [521.8,643.5,769.1,1020.5,1181.7,1055,1185.2]
+    },
+    {
+      name: '糖料 单位: 十万吨',
+      type: 'bar',
+      stack: 'total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: [238.18,246.14,291.12,360.28,435.94,403.23,479.46]
+    },
+    
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
